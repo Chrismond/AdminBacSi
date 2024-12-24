@@ -57,14 +57,6 @@
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa Thông Tin</button>
                             </li>
 
-                            @*<li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-        </li>
-
-        <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-        </li>*@
-
                         </ul>
                         <div class="tab-content pt-2">
 
@@ -230,15 +222,7 @@
                                             <input name="DiaChi" type="text" class="form-control" id="DiaChi" value="@Model.DiaChi">
                                         </div>
                                     </div>
-                                    @*<div class="row mb-3">
-                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Thành Phố</label>
-                    <div class="col-md-8 col-lg-9">
-                        <select class="form-control" name="IDThanhPho">
-                            @Html.Raw(Html.Action("GetThanhPho", "HomePage", new { id = @Model.IDThanhPho }))
 
-                        </select>
-                    </div>
-                </div>*@
                                     <div class="row mb-3">
                                         <label for="Job" class="col-md-4 col-lg-3 col-form-label">Thành Phố</label>
                                         <div class="col-md-8 col-lg-9">
@@ -272,7 +256,6 @@
                                             var idThanhPho = document.getElementById("IDThanhPho").value;
 
                                             if (!idThanhPho) {
-                                                // Nếu không có thành phố được chọn, reset danh sách quận
                                                 document.getElementById("IDQuan").innerHTML = "<option value=''>----- Chọn Quận/Huyện -----</option>";
                                                 return;
                                             }
@@ -280,19 +263,18 @@
                                             fetch(`/HomePage/GetDanhSachQuan?idThanhPho=${idThanhPho}`)
                                                 .then(response => response.text())
                                                 .then(data => {
-                                                    document.getElementById("IDQuan").innerHTML = data; // Cập nhật dropdown quận
+                                                    document.getElementById("IDQuan").innerHTML = data;
                                                 })
                                                 .catch(error => {
                                                     console.error("Lỗi khi tải danh sách quận:", error);
                                                     document.getElementById("IDQuan").innerHTML = "<option value=''>----- Lỗi khi tải -----</option>";
                                                 });
                                         }
-                                        //
+                                        
                                         function loadPhuongXa() {
                                             var idQuan = document.getElementById("IDQuan").value;
 
                                             if (!idQuan) {
-                                                // Nếu không có quận được chọn, reset danh sách phường
                                                 document.getElementById("IDPhuong").innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
                                                 return;
                                             }
@@ -300,16 +282,14 @@
                                             fetch(`/HomePage/GetDanhSachPhuong?idQuan=${idQuan}`)
                                                 .then(response => response.text())
                                                 .then(data => {
-                                                    document.getElementById("IDPhuong").innerHTML = data; // Cập nhật dropdown quận
+                                                    document.getElementById("IDPhuong").innerHTML = data; 
                                                 })
                                                 .catch(error => {
                                                     console.error("Lỗi khi tải danh sách quận:", error);
                                                     document.getElementById("IDPhuong").innerHTML = "<option value=''>----- Lỗi khi tải -----</option>";
                                                 });
                                         }
-
                                     </script>
-
 
                                     <div class="row mb-3">
                                         <label for="TinhTrangHonNhan" class="col-md-4 col-lg-3 col-form-label">Tình trạng</label>
@@ -323,7 +303,6 @@
                                             <select class="form-control" name="NgheNghiep">
                                                 @Html.Raw(Html.Action("GetNgheNghiep", "HomePage", new { id = @Model.NgheNghiep }))
                                             </select>
-
                                         </div>
                                     </div>
 
@@ -339,7 +318,6 @@
                                         <div class="col-md-8 col-lg-9">
                                             @if (Model.NgayCap.HasValue)
                                             {
-
                                                 <input type="date" id="inputDate" name="NgayCap" class="form-control"
                                                        value="@(Model.NgayCap.HasValue ? Model.NgayCap.Value.ToString("yyyy-MM-dd") : "")" />
                                             }
@@ -356,7 +334,6 @@
                                             <select class="form-control" name="NoiCap_IDTP">
                                                 @Html.Raw(Html.Action("GetThanhPho", "HomePage", new { id = @Model.NoiCap_IDTP }))
                                             </select>
-
                                         </div>
                                     </div>
 
@@ -366,7 +343,6 @@
                                             <select class="form-control" name="IDNhomMau">
                                                 @Html.Raw(Html.Action("GetNhomMau", "HomePage", new { id = @Model.IDNhomMau }))
                                             </select>
-
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -380,20 +356,13 @@
                                         <button type="submit" class="btn btn-primary">Cập Nhật</button>
                                     </div>
                                 </form><!-- End Profile Edit Form -->
-
                             </div>
-
-
-                            
                         </div><!-- End Bordered Tabs -->
-
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
 </main>
 <script>
     $(document).ready(function () {
@@ -422,7 +391,6 @@
                     }
                 });
             } else {
-                // Nếu không chọn thành phố, xóa các quận đã chọn và vô hiệu hóa dropdown quận
                 $('#IDQuan').empty().append('<option value="">----- Chọn Quận/Huyện -----</option>');
             }
         });

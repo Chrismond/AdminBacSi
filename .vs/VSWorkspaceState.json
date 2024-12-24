@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ManageBloodTypes",
+    "\\ManageBloodTypes\\Controllers",
+    "\\ManageBloodTypes\\DBContext",
+    "\\ManageBloodTypes\\Views",
+    "\\ManageBloodTypes\\Views\\HomePage"
+  ],
+  "SelectedNode": "\\ManageBloodTypes\\Controllers\\HomePageController.cs",
+  "PreviewInSolutionExplorer": false
+}

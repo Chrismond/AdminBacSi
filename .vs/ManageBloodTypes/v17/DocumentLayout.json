@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DoAnMonHoc\\AdminBacSi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|d:\\doanmonhoc\\adminbacsi\\managebloodtypes\\views\\landingpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\views\\landingpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|d:\\doanmonhoc\\adminbacsi\\managebloodtypes\\views\\shared\\_layout_news.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\views\\shared\\_layout_news.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|d:\\doanmonhoc\\adminbacsi\\managebloodtypes\\views\\shared\\_layout_landingpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\views\\shared\\_layout_landingpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|d:\\doanmonhoc\\adminbacsi\\managebloodtypes\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|d:\\doanmonhoc\\adminbacsi\\managebloodtypes\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|D:\\DoAnMonHoc\\AdminBacSi\\managebloodtypes\\controllers\\landingpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61B35112-1CE3-4B3D-ACA3-D2AAEA5A95A7}|ManageBloodTypes\\ManageBloodTypes.csproj|solutionrelative:managebloodtypes\\controllers\\landingpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\LandingPage\\Index.cshtml",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Views\\LandingPage\\Index.cshtml",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\LandingPage\\Index.cshtml",
+              "RelativeToolTip": "ManageBloodTypes\\Views\\LandingPage\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADkAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T08:32:58.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout_LandingPage.cshtml",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Shared\\_Layout_LandingPage.cshtml",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Views\\Shared\\_Layout_LandingPage.cshtml",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Shared\\_Layout_LandingPage.cshtml",
+              "RelativeToolTip": "ManageBloodTypes\\Views\\Shared\\_Layout_LandingPage.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACEAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T07:02:37.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout_News.cshtml",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Shared\\_Layout_News.cshtml",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Views\\Shared\\_Layout_News.cshtml",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Shared\\_Layout_News.cshtml",
+              "RelativeToolTip": "ManageBloodTypes\\Views\\Shared\\_Layout_News.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACEAAAB4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T07:08:12.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Doctor\\Index.cshtml",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Views\\Doctor\\Index.cshtml",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Views\\Doctor\\Index.cshtml",
+              "RelativeToolTip": "ManageBloodTypes\\Views\\Doctor\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T08:06:23.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DoctorController.cs",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Controllers\\DoctorController.cs",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Controllers\\DoctorController.cs",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Controllers\\DoctorController.cs",
+              "RelativeToolTip": "ManageBloodTypes\\Controllers\\DoctorController.cs",
+              "ViewState": "AQIAAB8BAAAAAAAAAAAUwCIBAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T08:06:08.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LandingPageController.cs",
+              "DocumentMoniker": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Controllers\\LandingPageController.cs",
+              "RelativeDocumentMoniker": "ManageBloodTypes\\Controllers\\LandingPageController.cs",
+              "ToolTip": "D:\\DoAnMonHoc\\AdminBacSi\\ManageBloodTypes\\Controllers\\LandingPageController.cs",
+              "RelativeToolTip": "ManageBloodTypes\\Controllers\\LandingPageController.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAkwD0AAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T08:33:00.084Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

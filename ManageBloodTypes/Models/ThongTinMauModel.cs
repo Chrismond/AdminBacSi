@@ -12,5 +12,7 @@ namespace ManageBloodTypes.Models
         public string NoiDung { get; set; }
         public string HinhAnh { get; set; }
         public Nullable<bool> Hide { get; set; }
+        public List<ThongTinMauModel> OtherArticles { get; set; }
+
     }
 }

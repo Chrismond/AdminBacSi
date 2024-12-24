@@ -1,0 +1,263 @@
+﻿@model ManageBloodTypes.Models.ThongTinCaNhanModels
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout_Doctor.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Tìm Kiếm Thông Tin</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-start" style="padding-top: 20px;">
+                <div class="col-xl-10">
+                    <div class="card">
+                        <div class="card-body pt-3">
+                            <div class="tab-content pt-2">
+
+                                <!-- Thành Phố Dropdown -->
+                                <div class="row mb-3">
+                                    <label for="IDThanhPho" class="col-md-4 col-lg-3 col-form-label">Thành Phố</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select class="form-control" name="IDThanhPho" id="IDThanhPho" onchange="loadQuanHuyen()">
+                                            @Html.Raw(ViewBag.ThanhPhoList)
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Quận/Huyện Dropdown -->
+                                <div class="row mb-3">
+                                    <label for="IDQuan" class="col-md-4 col-lg-3 col-form-label">Quận/Huyện</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select class="form-control" name="IDQuan" id="IDQuan" onchange="loadPhuongXa()" disabled>
+                                            <option value="">----- Chọn Quận/Huyện -----</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Phường/Xã Dropdown -->
+                                <div class="row mb-3">
+                                    <label for="IDPhuong" class="col-md-4 col-lg-3 col-form-label">Phường/Xã</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select class="form-control" name="IDPhuong" id="IDPhuong" disabled>
+                                            <option value="">----- Chọn Phường/Xã -----</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Nhóm Máu Cho Dropdown -->
+                                <div class="row mb-3">
+                                    <label for="BloodGroupFor" class="col-md-4 col-lg-3 col-form-label">Nhóm Máu Được Nhận Từ</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select class="form-control" name="BloodGroupFor" id="BloodGroupFor" onchange="toggleBloodGroupSelection()">
+                                            <option value="">----- Chọn -----</option>
+                                            @foreach (var bloodGroup in ViewBag.BloodGroups)
+                                            {
+                                                <option value="@bloodGroup.IDNhomMau">@bloodGroup.TenNhomMau</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Nhóm Máu Nhận Dropdown -->
+                                <div class="row mb-3">
+                                    <label for="BloodGroupReceive" class="col-md-4 col-lg-3 col-form-label"> Nhóm Máu Có Thể Truyền Cho </label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <select class="form-control" name="BloodGroupReceive" id="BloodGroupReceive" onchange="toggleBloodGroupSelection()">
+                                            <option value="">----- Chọn -----</option>
+                                            @foreach (var bloodGroup in ViewBag.BloodGroups)
+                                            {
+                                                <option value="@bloodGroup.IDNhomMau">@bloodGroup.TenNhomMau</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Tìm Kiếm Button -->
+                                <div class="row mb-3">
+                                    <div class="col-md-8 col-lg-9">
+                                        <button type="button" class="btn btn-primary" onclick="SearchUser()">Tìm Kiếm</button>
+                                    </div>
+                                </div>
+
+                                <!-- Kết quả tìm kiếm -->
+                                <div id="searchResults" class="search-results mt-4">
+                                    <div class="alert alert-info" role="alert" id="noResults" style="display:none;">
+                                        Không tìm thấy người dùng nào phù hợp.
+                                    </div>
+                                    <div id="resultContainer" class="table-responsive" style="display:none;">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã Tài Khoản</th>
+                                                    <th>Họ và Tên</th>
+                                                    <th>Địa Chỉ</th>
+                                                    <th>Nhóm Máu</th>
+                                                    <th>Giới Tính</th>
+                                                    <th>Chi Tiết</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="resultTableBody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Bordered Tabs -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Modal for User Detail -->
+<div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userDetailModalLabel">Chi Tiết Người Dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Mã Tài Khoản:</strong> <span id="userAccountIdDetail"></span></p>
+                <p><strong>Họ và Tên:</strong> <span id="userNameDetail"></span></p>
+                <p><strong>Địa Chỉ:</strong> <span id="userAddressDetail"></span></p>
+                <p><strong>Nhóm Máu:</strong> <span id="userBloodGroupDetail"></span></p>
+                <p><strong>Giới Tính:</strong> <span id="userGenderDetail"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript tìm kiếm -->
+<script>
+    function loadQuanHuyen() {
+        var idThanhPho = document.getElementById("IDThanhPho").value;
+        fetch(`/Doctor/LoadQuanHuyen?idThanhPho=${idThanhPho}`)
+            .then(response => response.json())
+            .then(data => {
+                var quanSelect = document.getElementById("IDQuan");
+                var phuongSelect = document.getElementById("IDPhuong");
+
+                quanSelect.innerHTML = "<option value=''>----- Chọn Quận/Huyện -----</option>";
+                phuongSelect.innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
+                phuongSelect.disabled = true;
+
+                if (data.length > 0) {
+                    quanSelect.disabled = false;
+                    data.forEach(quan => {
+                        var option = document.createElement("option");
+                        option.value = quan.IDQuan;
+                        option.textContent = quan.TenQuan;
+                        quanSelect.appendChild(option);
+                    });
+                } else {
+                    quanSelect.disabled = true;
+                }
+            });
+    }
+
+    function loadPhuongXa() {
+        var idQuan = document.getElementById("IDQuan").value;
+        fetch(`/Doctor/LoadXaPhuong?idQuan=${idQuan}`)
+            .then(response => response.json())
+            .then(data => {
+                var phuongSelect = document.getElementById("IDPhuong");
+                phuongSelect.innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
+
+                if (data.length > 0) {
+                    phuongSelect.disabled = false;
+                    data.forEach(phuong => {
+                        var option = document.createElement("option");
+                        option.value = phuong.IDPhuong;
+                        option.textContent = phuong.TenPhuong;
+                        phuongSelect.appendChild(option);
+                    });
+                } else {
+                    phuongSelect.disabled = true;
+                }
+            });
+    }
+
+    function toggleBloodGroupSelection() {
+        var bloodGroupFor = document.getElementById("BloodGroupFor").value;
+        var bloodGroupReceive = document.getElementById("BloodGroupReceive");
+
+        if (bloodGroupFor) {
+            bloodGroupReceive.disabled = true;
+        } else {
+            bloodGroupReceive.disabled = false;
+        }
+
+        var bloodGroupReceiveValue = bloodGroupReceive.value;
+
+        if (bloodGroupReceiveValue) {
+            document.getElementById("BloodGroupFor").disabled = true;
+        } else {
+            document.getElementById("BloodGroupFor").disabled = false;
+        }
+    }
+
+    function SearchUser() {
+        var idThanhPho = document.getElementById("IDThanhPho").value;
+        var idQuan = document.getElementById("IDQuan").value;
+        var idPhuong = document.getElementById("IDPhuong").value;
+        var bloodGroupFor = document.getElementById("BloodGroupFor").value;
+        var bloodGroupReceive = document.getElementById("BloodGroupReceive").value;
+
+        fetch(`/Doctor/SearchUsers?idThanhPho=${idThanhPho}&idQuan=${idQuan}&idPhuong=${idPhuong}&bloodGroupFor=${bloodGroupFor}&bloodGroupReceive=${bloodGroupReceive}`)
+            .then(response => response.json())
+            .then(data => {
+                var resultContainer = document.getElementById("resultContainer");
+                var noResultsMessage = document.getElementById("noResults");
+                var resultTableBody = document.getElementById("resultTableBody");
+
+                resultTableBody.innerHTML = '';
+
+                if (data.length === 0) {
+                    resultContainer.style.display = 'none';
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                    resultContainer.style.display = 'block';
+
+                    data.forEach(user => {
+                        var row = document.createElement("tr");
+                        row.innerHTML = `
+                        <td>${user.MaTaiKhoan}</td>
+                        <td>${user.HoTen}</td>
+                        <td>${user.Quan}, ${user.ThanhPho}, ${user.Phuong}</td>
+                        <td>${user.NhomMau}</td>
+                        <td>${user.GioiTinh ? "Nam" : "Nữ"}</td>
+                        <td><a href="/Doctor/UserDetail/${user.MaTaiKhoan}" class="btn btn-info">Chi Tiết</a></td>
+                    `;
+                        resultTableBody.appendChild(row);
+                    });
+
+                }
+            });
+    }
+
+    function showUserDetail(user) {
+        // Kiểm tra xem đối tượng `user` có tồn tại và có các thuộc tính cần thiết không
+        if (user) {
+            // Gán giá trị các thuộc tính của modal
+            document.getElementById("userAccountIdDetail").textContent = user.MaTaiKhoan;
+            document.getElementById("userNameDetail").textContent = user.HoTen;
+            document.getElementById("userAddressDetail").textContent = `${user.Quan}, ${user.ThanhPho}, ${user.Phuong}`;
+            document.getElementById("userBloodGroupDetail").textContent = user.NhomMau;
+            document.getElementById("userGenderDetail").textContent = user.GioiTinh ? "Nam" : "Nữ";
+
+            // Khởi tạo và hiển thị modal
+            var myModal = new bootstrap.Modal(document.getElementById('userDetailModal'));
+            myModal.show();
+        } else {
+            console.error("Không có thông tin người dùng.");
+        }
+    }
+</script>

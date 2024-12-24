@@ -1,13 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLMauModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="tbBloodInfor">
+  <EntityType Name="tbBanner">
+    <Key>
+      <PropertyRef Name="IDBanner" />
+    </Key>
+    <Property Name="IDBanner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDung" Type="nvarchar" MaxLength="250" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbBloodInfors">
     <Key>
       <PropertyRef Name="IDThTinMau" />
     </Key>
     <Property Name="IDThTinMau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
     <Property Name="NoiDung" Type="nvarchar(max)" />
-    <Property Name="HinhAnh" Type="varchar(max)" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="50" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbHinhAnh">
+    <Key>
+      <PropertyRef Name="IDHinh" />
+    </Key>
+    <Property Name="IDHinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="250" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="250" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbLichSuGiaoDich">
+    <Key>
+      <PropertyRef Name="IDGiaoDich" />
+    </Key>
+    <Property Name="IDGiaoDich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="IDNhomMau" Type="int" />
+    <Property Name="TinhTrangYeuCau" Type="bit" />
+    <Property Name="TrangThai" Type="bit" />
+    <Property Name="NgayYeuCau" Type="date" />
+    <Property Name="SoLuongMau" Type="int" />
+    <Property Name="NgayXacNhan" Type="date" />
     <Property Name="Hide" Type="bit" />
   </EntityType>
   <EntityType Name="tbNgheNghiep">
@@ -41,6 +74,16 @@
     </Key>
     <Property Name="IDQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenQuyen" Type="nvarchar" MaxLength="150" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbThongKeMau">
+    <Key>
+      <PropertyRef Name="IDThongKeMau" />
+    </Key>
+    <Property Name="IDThongKeMau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="SoLanHienMau" Type="int" />
+    <Property Name="SoLanNhanMau" Type="int" />
     <Property Name="Hide" Type="bit" />
   </EntityType>
   <EntityType Name="tbThongTinCaNhan">
@@ -86,11 +129,15 @@
     <Property Name="Hide" Type="bit" />
   </EntityType>
   <EntityContainer Name="QLMauModelStoreContainer">
-    <EntitySet Name="tbBloodInfor" EntityType="Self.tbBloodInfor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbBloodInfors" EntityType="Self.tbBloodInfors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbHinhAnh" EntityType="Self.tbHinhAnh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbLichSuGiaoDich" EntityType="Self.tbLichSuGiaoDich" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbNgheNghiep" EntityType="Self.tbNgheNghiep" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbNhomMau" EntityType="Self.tbNhomMau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbQuanHuyen" EntityType="Self.tbQuanHuyen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbQuyen" EntityType="Self.tbQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbThongKeMau" EntityType="Self.tbThongKeMau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbThongTinCaNhan" EntityType="Self.tbThongTinCaNhan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbTinhThanhPho" EntityType="Self.tbTinhThanhPho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbXaPhuong" EntityType="Self.tbXaPhuong" Schema="dbo" store:Type="Tables" />

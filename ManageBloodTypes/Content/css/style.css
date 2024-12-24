@@ -9,6 +9,39 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+#error_message1 {
+    display: block; /* Đảm bảo phần tử hiển thị */
+    white-space: nowrap; /* Không xuống dòng trên màn hình lớn */
+}
+
+@media screen and (max-width: 768px) {
+    #error_message1 {
+        white-space: normal; /* Cho phép xuống dòng trên màn hình nhỏ */
+        word-wrap: break-word; /* Chia từ nếu cần thiết */
+    }
+}
+
+.alert {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: red;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 :root {
   scroll-behavior: smooth;
 }
@@ -1055,12 +1088,16 @@ h6 {
 .profile .profile-card img {
   max-width: 120px;
 }
+profile-card {
+    max-width: 120px;
+}
+
 
 .profile .profile-card h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2c384e;
-  margin: 10px 0 0 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c384e;
+    margin: 10px 0 0 0;
 }
 
 .profile .profile-card h3 {

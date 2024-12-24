@@ -9,5 +9,7 @@ namespace ManageBloodTypes.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<int> CanGiveTo { get; set; }
+        public List<int> CanReceiveFrom { get; set; }
     }
 }

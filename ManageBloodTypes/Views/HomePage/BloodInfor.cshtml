@@ -8,68 +8,31 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1 @*class="d-flex justify-content-center align-items-start" style="padding-top: 1px;"*@>Thông Tin Về Các Nhóm Máu</h1>
-        @*<nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Users</li>
-                    <li class="breadcrumb-item active">Profile</li>
-                </ol>
-            </nav>*@
+        <h1>Thông Tin Về Các Nhóm Máu</h1>
     </div><!-- End Page Title -->
 
     <section class="section profile">
         <div class="row">
             <div class="d-flex justify-content-center align-items-start" style=" padding-top: 20px;">
                 <div class="col-xl-10">
-
                     <div class="card">
                         <div class="card-body pt-3">
-                            <!-- Bordered Tabs -->
-                            <!--<ul class="nav nav-tabs nav-tabs-bordered">
-
-                                <li class="nav-item">
-                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng Quan</button>
-                                </li>
-
-                                <li class="nav-item">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Thay Đổi Mật Khẩu</button>
-                                </li>-->
-
-                                @*<li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-                                    </li>*@
-
-                            <!--</ul>-->
                             <div class="tab-content pt-2">
-
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-
-                                    <!--<h5 class="card-title">-->@*Thông Tin Chi Tiết*@<!--</h5>-->
-
-                                    <div class="row" >
+                                    <div class="row">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="ckeditor">
                                                 @Html.Raw(Model.NoiDung)
                                             </div>
                                         </div>
                                     </div>
-
-                                    
                                 </div>
                             </div><!-- End Bordered Tabs -->
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
-
 </main>
 

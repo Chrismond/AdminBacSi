@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ManageBloodTypes.Models.ThongTinMauModel>
+
+<section class="ftco-section bg-light" id="blog-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Tin Tức</h2>
+            </div>
+        </div>
+        <div class="row g-4 d-flex">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry">
+                        <a href="@Url.Action("Details", "LandingPage", new { id = item.IDThTinMau })" class="block-20" style="background-image: url('@item.HinhAnh');">
+                        </a>
+                        <div class="text mt-3">
+                            <h3 class="heading"><a href="@Url.Action("Details", "LandingPage", new { id = item.IDThTinMau })">@item.TieuDe</a></h3>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

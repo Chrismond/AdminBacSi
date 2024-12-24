@@ -57,17 +57,35 @@
     <EntitySet Name="tbQuyens" EntityType="Self.tbQuyen" />
     <EntitySet Name="tbTinhThanhPhoes" EntityType="Self.tbTinhThanhPho" />
     <EntitySet Name="tbXaPhuongs" EntityType="Self.tbXaPhuong" />
-    <EntitySet Name="tbBloodInfors" EntityType="QLMauModel.tbBloodInfor" />
+    <EntitySet Name="tbLichSuGiaoDiches" EntityType="QLMauModel.tbLichSuGiaoDich" />
+    <EntitySet Name="tbThongKeMaus" EntityType="QLMauModel.tbThongKeMau" />
     <EntitySet Name="tbThongTinCaNhans" EntityType="QLMauModel.tbThongTinCaNhan" />
+    <EntitySet Name="tbBanners" EntityType="QLMauModel.tbBanner" />
+    <EntitySet Name="tbHinhAnhs" EntityType="QLMauModel.tbHinhAnh" />
+    <EntitySet Name="tbBloodInfors" EntityType="QLMauModel.tbBloodInfor" />
   </EntityContainer>
-  <EntityType Name="tbBloodInfor">
+  <EntityType Name="tbLichSuGiaoDich">
     <Key>
-      <PropertyRef Name="IDThTinMau" />
+      <PropertyRef Name="IDGiaoDich" />
     </Key>
-    <Property Name="IDThTinMau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IDGiaoDich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTaiKhoan" Type="Int32" />
+    <Property Name="IDNhomMau" Type="Int32" />
+    <Property Name="TinhTrangYeuCau" Type="Boolean" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="NgayYeuCau" Type="DateTime" Precision="0" />
+    <Property Name="SoLuongMau" Type="Int32" />
+    <Property Name="NgayXacNhan" Type="DateTime" Precision="0" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbThongKeMau">
+    <Key>
+      <PropertyRef Name="IDThongKeMau" />
+    </Key>
+    <Property Name="IDThongKeMau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaTaiKhoan" Type="Int32" />
+    <Property Name="SoLanHienMau" Type="Int32" />
+    <Property Name="SoLanNhanMau" Type="Int32" />
     <Property Name="Hide" Type="Boolean" />
   </EntityType>
   <EntityType Name="tbThongTinCaNhan">
@@ -93,6 +111,35 @@
     <Property Name="TinhTrangHonNhan" Type="Boolean" />
     <Property Name="NgheNghiep" Type="Int32" />
     <Property Name="IDNhomMau" Type="Int32" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbBanner">
+    <Key>
+      <PropertyRef Name="IDBanner" />
+    </Key>
+    <Property Name="IDBanner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbHinhAnh">
+    <Key>
+      <PropertyRef Name="IDHinh" />
+    </Key>
+    <Property Name="IDHinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnh" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TieuDe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Hide" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbBloodInfor">
+    <Key>
+      <PropertyRef Name="IDThTinMau" />
+    </Key>
+    <Property Name="IDThTinMau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Hide" Type="Boolean" />
   </EntityType>
 </Schema>

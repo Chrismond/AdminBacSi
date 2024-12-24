@@ -89,9 +89,6 @@ namespace ManageBloodTypes.Controllers
                 return "";
             }
         }
-
-
-
         public string GetThanhPho(int? id)
         {
             string html = "";
@@ -145,10 +142,6 @@ namespace ManageBloodTypes.Controllers
                 return "";
             }
         }
-
-
-
-
         public string GetDanhSachQuan(int? idThanhPho, int? idQuan)
         {
             string html = "<option value=''>----- Chọn Quận/Huyện -----</option>";
@@ -238,12 +231,6 @@ namespace ManageBloodTypes.Controllers
             }
         }
 
-
-
-
-
-
-
         public string GetNhomMau(int? id)
         {
             string html = "";
@@ -298,8 +285,6 @@ namespace ManageBloodTypes.Controllers
                 return "";
             }
         }
-
-
         public ActionResult Home()
         {
             string Gmail = Session["UserEmail"] as string;
@@ -391,15 +376,6 @@ namespace ManageBloodTypes.Controllers
             {
                 user.TinhTrangHonNhanDisplay = "Đã Kết Hôn"; // False tương ứng với Nữ
             }
-
-            //if (!string.IsNullOrEmpty(user.CCCD))
-            //{
-            //    user.CCCD = new string('*', user.CCCD.Length);
-            //}
-            //else
-            //{
-            //    user.CCCD = "(Chưa có thông tin)";
-            //}
             if (string.IsNullOrEmpty(user.CCCD))
             {
                 user.CCCD = "(Chưa có thông tin)";
@@ -432,9 +408,6 @@ namespace ManageBloodTypes.Controllers
             Session["HinhAnh"] = user.HinhAnh;
             return View(user);
         }
-
-
-
         public ActionResult Index()
         {
             string Gmail = Session["UserEmail"] as string;
@@ -526,15 +499,6 @@ namespace ManageBloodTypes.Controllers
             {
                 user.TinhTrangHonNhanDisplay = "Đã Kết Hôn"; // False tương ứng với Nữ
             }
-
-            //if (!string.IsNullOrEmpty(user.CCCD))
-            //{
-            //    user.CCCD = new string('*', user.CCCD.Length);
-            //}
-            //else
-            //{
-            //    user.CCCD = "(Chưa có thông tin)";
-            //}
             if (string.IsNullOrEmpty(user.CCCD))
             {
                 user.CCCD = "(Chưa có thông tin)";
@@ -668,30 +632,6 @@ namespace ManageBloodTypes.Controllers
             // Trả về dữ liệu dưới dạng JSON
             return Json(lstQuanHuyen, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public ActionResult Login()
         {
             string Gmail = Session["UserEmail"] as string;
@@ -718,63 +658,7 @@ namespace ManageBloodTypes.Controllers
             return View(user);
         }
 
-        //[HttpPost]
-        //public ActionResult Login(ThongTinCaNhanModels model, string OldMatKhau, string NewMatKhau, string ConfirmNewMatKhau)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        string Gmail = Session["UserEmail"] as string;
-        //        // Tìm người dùng trong cơ sở dữ liệu bằng MaTaiKhoan (hoặc Gmail)
-        //        if (string.IsNullOrEmpty(Gmail))
-        //        {
-        //            return RedirectToAction("Index", "Home");  // Nếu không có Gmail trong session, chuyển hướng đến trang đăng nhập
-        //        }
-
-        //        // Tìm người dùng dựa trên Gmail
-        //        var user = db.tbThongTinCaNhans.FirstOrDefault(u => u.Gmail == Gmail);
-        //        if (user != null)
-        //        {
-        //            // Cập nhật thông tin người dùng
-        //            user.Gmail = model.Gmail;
-        //            user.SDT = model.SDT;
-        //            if (user.MatKhau != OldMatKhau)
-        //            {
-        //                ModelState.AddModelError("", "Mật khẩu cũ không chính xác.");
-        //                return View(model);
-        //            }
-
-        //            // Kiểm tra mật khẩu mới và xác nhận mật khẩu
-        //            if (NewMatKhau != ConfirmNewMatKhau)
-        //            {
-        //                ModelState.AddModelError("", "Mật khẩu mới và mật khẩu xác nhận không khớp.");
-        //                return View(model);
-        //            }
-        //            if (!string.IsNullOrEmpty(NewMatKhau))  // Cập nhật mật khẩu mới nếu có
-        //            {
-        //                user.MatKhau = NewMatKhau;
-        //            }
-        //            db.Entry(user).State = EntityState.Modified;
-
-        //            // Lưu thay đổi vào cơ sở dữ liệu
-        //            db.SaveChanges();
-
-        //            // Cập nhật thông tin mới vào session (nếu cần)
-        //            Session["UserEmail"] = model.Gmail;
-
-        //            // Sau khi cập nhật thành công, trả về trang profile
-        //            return RedirectToAction("Index", "HomePage");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Không tìm thấy thông tin người dùng.");
-        //        }
-        //    }
-
-        //    // Nếu có lỗi, quay lại trang chỉnh sửa với thông tin đã nhập
-        //    return View(model);
-        //}
-
-
+        
         [HttpPost]
         public JsonResult Login(ThongTinCaNhanModels model, string OldMatKhau, string NewMatKhau, string ConfirmNewMatKhau)
         {

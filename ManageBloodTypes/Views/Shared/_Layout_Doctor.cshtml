@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Trang Thông Tin</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/Content/img/favicon.png" rel="icon">
+    <link href="/Content/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/Content/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/Content/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="/Content/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="/Content/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/Content/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="/Content/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+            <a href="/Doctor" @*class="logo d-flex align-items-center"*@ class="responsive-title">
+                <span class="d-none d-lg-block"><strong>  TRANG KHAI BÁO THÔNG TIN CÁ NHÂN</strong></span>
+            </a>
+        </div>
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown pe-3">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="@Session["HinhAnh"]" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@Session["HoTen"].ToString()</span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>@Session["HoTen"].ToString()</h6>
+                            <h8>Mã TK: @Session["MaTaiKhoan"].ToString()</h8>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/HomePage">
+                                <i class="bi bi-person"></i>
+                                <span>Thông Tin Cá Nhân</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/HomePage/Login">
+                                <i class="bi bi-gear"></i>
+                                <span>Tài Khoản Đăng Nhập</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/Home/Logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Thoát</span>
+                            </a>
+                        </li>
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link " href="/Doctor">
+                    <span>Trang Chính</span>
+                </a>
+            </li>
+            <li class="nav-heading">Thông Tin Chung</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Doctor/Search">
+                    <i class="bi bi-search"></i>
+                    <span>Tra Cứu Thông Tin</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/Doctor/News">
+                    <i class="bi bi-chat-left-text"></i><span>Đăng bài</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="/Doctor/INews">
+                            <i class="bi bi-circle"></i><span>Xem/Chỉnh Sửa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Doctor/News">
+                            <i class="bi bi-circle"></i><span>Thêm mới</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Doctor/Information">
+                    <i class="bi bi-person"></i>
+                    <span>Thông Tin Cá Nhân</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Doctor/UpdateUserProfile">
+                    <i class="bi bi-key"></i>
+                    <span>Thông Tin Đăng Nhập</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/Home/Logout">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Thoát</span>
+                </a>
+            </li><!-- End Register Page Nav -->
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    @RenderBody()
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/Content/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Content/vendor/chart.js/chart.umd.js"></script>
+    <script src="/Content/vendor/echarts/echarts.min.js"></script>
+    <script src="/Content/vendor/quill/quill.js"></script>
+    <script src="/Content/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/Content/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/Content/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/Content/js/main.js"></script>
+
+</body>
+
+</html>

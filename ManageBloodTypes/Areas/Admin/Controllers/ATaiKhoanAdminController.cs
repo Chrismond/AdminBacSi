@@ -89,9 +89,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
                 return "";
             }
         }
-
-
-
         public string GetThanhPho(int? id)
         {
             string html = "";
@@ -134,7 +131,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
 
         }
         public String GetThanhPhoName(int id)
-
         {
             try
             {
@@ -145,10 +141,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
                 return "";
             }
         }
-
-
-
-
         public string GetDanhSachQuan(int? idThanhPho, int? idQuan)
         {
             string html = "<option value=''>----- Chọn Quận/Huyện -----</option>";
@@ -192,8 +184,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
                 return "";
             }
         }
-
-
         public string GetDanhSachPhuong(int? idPhuong, int? idQuan)
         {
             string html = "<option value=''>----- Chọn Phường/Xã -----</option>";
@@ -226,7 +216,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
             return html;
         }
         public String GetPhuongXaName(int id)
-
         {
             try
             {
@@ -237,13 +226,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
                 return "";
             }
         }
-
-
-
-
-
-
-
         public string GetNhomMau(int? id)
         {
             string html = "";
@@ -287,7 +269,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
 
         }
         public String GetNhomMauName(int id)
-
         {
             try
             {
@@ -431,7 +412,6 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
             Session["HoTen"] = user.HoTen;
             return View(user);
         }
-
         [HttpPost]
         public ActionResult Index(ThongTinCaNhanModels model, HttpPostedFileBase Editfile)
         {
@@ -556,7 +536,5 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
             }
             return Json(new { success = false, message = "Dữ liệu không hợp lệ." });
         }
-
-
     }
 }

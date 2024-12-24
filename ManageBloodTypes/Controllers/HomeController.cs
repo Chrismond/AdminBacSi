@@ -58,10 +58,11 @@ namespace ManageBloodTypes.Controllers
             }
             if (Gmail.Trim().ToLower() == "bacsi123@gmail.com" && MatKhau.Trim() == "Bacsi123")
             {
+                Session["HinhAnh"] = user.HinhAnh;
                 Session["UserEmail"] = user.Gmail;
                 Session["MaTaiKhoan"] = user.MaTaiKhoan;
                 Session["HoTen"] = user.HoTen;
-                return RedirectToAction("Index", "Search");
+                return RedirectToAction("Index", "Doctor");
             }
             if (Gmail.Trim().ToLower() == "admin123@gmail.com" && MatKhau.Trim() == "Admin123")
             {
