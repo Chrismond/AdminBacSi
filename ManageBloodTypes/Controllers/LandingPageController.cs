@@ -1,4 +1,5 @@
-﻿using ManageBloodTypes.DBContext;
+﻿using ManageBloodTypes.Areas.Admin.Model;
+using ManageBloodTypes.DBContext;
 using ManageBloodTypes.Models;
 using System;
 using System.Collections.Generic;
@@ -20,34 +21,37 @@ namespace ManageBloodTypes.Controllers
         {
             List<BannerModel> banners = new List<BannerModel>();
             banners = (from ca in db.tbBanners
-                         select (new BannerModel
-                         {
-                             IDBanner = ca.IDBanner,
-                             TieuDe = ca.TieuDe,
-                             NoiDung = ca.NoiDung,
-                             HinhAnh = ca.HinhAnh,
-                             Hide = ca.Hide,
-                         })).ToList();
+                       where ca.Hide == false
+                       select (new BannerModel
+                       {
+                           IDBanner = ca.IDBanner,
+                           TieuDe = ca.TieuDe,
+                           NoiDung = ca.NoiDung,
+                           HinhAnh = ca.HinhAnh,
+                           Hide = ca.Hide,
+                       })).ToList();
             return PartialView(banners);
         }
         public ActionResult TinTuc()
         {
             List<ThongTinMauModel> news = new List<ThongTinMauModel>();
             news = (from ca in db.tbBloodInfors
-                       select (new ThongTinMauModel
-                       {
-                           IDThTinMau = ca.IDThTinMau,
-                           TieuDe = ca.TieuDe,
-                           NoiDung = ca.NoiDung,
-                           HinhAnh = ca.HinhAnh,
-                           Hide = ca.Hide,
-                       })).ToList();
+                    where ca.Hide == false
+                    select (new ThongTinMauModel
+                    {
+                        IDThTinMau = ca.IDThTinMau,
+                        TieuDe = ca.TieuDe,
+                        NoiDung = ca.NoiDung,
+                        HinhAnh = ca.HinhAnh,
+                        Hide = ca.Hide,
+                    })).ToList();
             return PartialView(news);
         }
         public ActionResult HinhAnh()
         {
             List<HinhAnhModel> news = new List<HinhAnhModel>();
             news = (from ca in db.tbHinhAnhs
+                    where ca.Hide == false
                     select (new HinhAnhModel
                     {
                         IDHinh = ca.IDHinh,
@@ -57,18 +61,33 @@ namespace ManageBloodTypes.Controllers
                     })).ToList();
             return PartialView(news);
         }
+        public ActionResult TieuChuan()
+        {
+            List<TieuChuanModel> a = new List<TieuChuanModel>();
+            a = (from ca in db.tbTieuChuans
+                 where ca.Hide == false
+                 select (new TieuChuanModel
+                 {
+                     IDTieuChuan = ca.IDTieuChuan,
+                     Icon = ca.Icon,
+                     TieuDe = ca.TieuDe,
+                     NoiDung = ca.NoiDung,
+                     Hide = ca.Hide,
+                 })).ToList();
+            return PartialView(a);
+        }
         public ActionResult Details(int? id)
         {
             var article = db.tbBloodInfors.FirstOrDefault(a => a.IDThTinMau == id);
 
             if (article == null)
             {
-                return HttpNotFound(); 
+                return HttpNotFound();
             }
 
             var otherArticles = db.tbBloodInfors
                                   .Where(a => a.IDThTinMau != id)
-                                  .Take(5) 
+                                  .Take(5)
                                   .ToList();
 
             var otherArticlesModels = otherArticles.Select(a => new ThongTinMauModel
@@ -88,9 +107,27 @@ namespace ManageBloodTypes.Controllers
                 OtherArticles = otherArticlesModels
             };
 
-            return View(model); 
+            return View(model);
         }
+        public ActionResult TuyenDuong()
+        {
+            List<TuyenDuongModel> topDonors =
+                (from tk in db.tbThongKeMaus
+                 join tt in db.tbThongTinCaNhans
+                 on tk.MaTaiKhoan equals tt.MaTaiKhoan
+                 where tk.Hide == false
+                 orderby tk.SoLanHienMau descending
+                 select new TuyenDuongModel
+                 {
+                     HinhAnh = tt.HinhAnh,
+                     MaTaiKhoan = tk.MaTaiKhoan,
+                     SoLanHienMau = tk.SoLanHienMau,
+                     HoTen = tt.HoTen
+                 }).Take(5).ToList();
 
+                        return PartialView(topDonors);
+
+        }
 
     }
 }

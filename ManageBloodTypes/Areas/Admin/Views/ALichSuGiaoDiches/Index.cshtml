@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ManageBloodTypes.DBContext.tbLichSuGiaoDich>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN YÊU CẦU</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DANH SÁCH CÁC THÔNG TIN YÊU CẦU</h5>
+                        <a class="btn btn-success" href="/Admin/ALichSuGiaoDiches/Create">THÊM MỚI</a>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    STT
+                                </th>
+                                <th>
+                                    Mã Tài Khoản
+                                </th>
+                                <th>
+                                    Nhóm Máu
+                                </th>
+                                <th>
+                                    Nội Dung
+                                </th>
+                                <th>
+                                    Tình Trạng
+                                </th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.IDGiaoDich)
+
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.MaTaiKhoan)
+                                </td>
+                                <td style="padding-left: 35px;">
+                                    @if (item.IDNhomMau.HasValue && item.IDNhomMau.Value != 0)
+                                    {
+                                        @Html.Action("GetNhomMauName", "ALichSuGiaoDiches", new { id = item.IDNhomMau })
+                                    }
+                                    else
+                                    {
+                                        <text>(Chưa có thông tin)</text>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.TinhTrangYeuCau != true)
+                                    {
+                                        <p> Đang Cần Máu</p>
+                                    }
+                                    else
+                                    {
+                                        <p> Hiến Máu</p>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.TrangThai != true)
+                                    {
+                                        <p> Chưa Xử Lý</p>
+                                    }
+                                    else
+                                    {
+                                        <p>   Đã Xử Lý </p>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/Admin/ALichSuGiaoDiches/Edit/@item.IDGiaoDich"><i class="bi bi-pencil-square"></i></a> |
+                                    <a href="/Admin/ALichSuGiaoDiches/Details/@item.IDGiaoDich"><i class="ri-article-line"></i></a> |
+                                    <a href="/Admin/ALichSuGiaoDiches/Delete/@item.IDGiaoDich"><i class="ri-delete-bin-6-line"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+</main>
+

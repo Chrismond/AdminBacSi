@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ManageBloodTypes.Models.TuyenDuongModel>
+@{ 
+    int count = 1;
+}
+<section class="main-property-sec" id="about-section">
+    <div class="container">
+        <div class="partners-sec">
+            <div class="row justify-content-center pb-5">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">BẢNG XẾP HẠNG LƯỢT HIẾN MÁU CAO NHẤT</h2>
+                    <p>Cảm ơn bạn vì đã đồng hành cùng chúng tôi</p>
+                </div>
+            </div>
+                <div class="row image-grid justify-content-center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+                            <h5 class="center-bold-italic" style="color:darkred">Top @count</h5>
+                            <div class="image-wrapper">
+                                <img src="@(!string.IsNullOrEmpty(item.HinhAnh) ? item.HinhAnh : "/Content/img/avatarfb.jpg")" alt="/Content/img/avatarfb.jpg" class="img-fluid">
+
+                            </div>
+                            <p class="center-bold-italic">@item.HoTen</p>
+                        </div>
+                        count++;
+                    }
+            </div>
+        </div>
+    </div>
+</section>

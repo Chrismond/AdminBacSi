@@ -4,6 +4,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -48,7 +49,74 @@ html {
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
+.center-bold-italic {
+    text-align: center; /* Canh giữa văn bản */
+    font-weight: bold; /* In đậm */
+   /* font-style: italic;  In nghiêng */
+}
 
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Canh giữa các hình ảnh */
+    align-items: center;
+    max-width: 1600px; /* Giới hạn chiều rộng tối đa của grid */
+    margin: 0 auto; /* Đảm bảo grid được canh giữa */
+}
+
+
+.image-wrapper {
+    width: 150px; /* Kích thước nhỏ hơn */
+    height: 150px; /* Kích thước nhỏ hơn */
+    position: relative;
+    overflow: hidden;
+    border-radius: 30%; /* Tạo khung hình tròn */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+
+}
+
+    .image-wrapper img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+    }
+
+        .image-wrapper img:hover {
+            transform: translate(-50%, -50%) scale(1.09);
+        }
+
+@media (max-width: 991px) {
+    .image-grid .col-md-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-grid .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575px) {
+    .image-grid .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .image-wrapper {
+        width: 150px; /* Kích thước nhỏ hơn */
+        height: 150px; /* Kích thước nhỏ hơn */
+    }
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -5349,12 +5417,26 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #007bff !important; }
+    background-image: url('/Content/LandingPage/images/pic1.jpg') !important; /* Hình ảnh nền */
+    background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ phần tử */
+    background-position: center center; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    height: 500px; /* Chiều cao cho section */
+    width: 100%; /* Chiều rộng 100% */
+}
+
+/* Media Query cho điện thoại */
+@media (max-width: 767px) {
+    .bg-primary {
+        background-size: contain; /* Thu nhỏ hình ảnh để đảm bảo hiển thị đầy đủ */
+        height: 300px; /* Điều chỉnh chiều cao cho điện thoại */
+    }
+}
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0062cc !important; }
+  /*background-color: #0062cc !important;*/ }
 
 .bg-secondary {
   background-color: #6c757d !important; }
@@ -8715,7 +8797,7 @@ h1, h2, h3, h4, h5,
   background: #f8f9fa !important; }
 
 .bg-primary {
-  background: #b1b493; }
+ /* background: #b1b493;*/ }
 
 .btn {
   cursor: pointer;
@@ -9152,7 +9234,7 @@ textarea.form-control {
   visibility: hidden; }
 
 .bg-primary {
-  background: #b1b493 !important; }
+ /* background: #b1b493 !important;*/ }
 
 .ftco-section {
   padding: 7em 0;

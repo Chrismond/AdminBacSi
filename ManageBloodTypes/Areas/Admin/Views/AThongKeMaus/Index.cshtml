@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ManageBloodTypes.Areas.Admin.Model.SoLanHienMauModel>
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "Thống Kê Số Lần Hiến Máu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+
+    var labels = Model.Select(x => $"{x.HoTen}\n (MTK: {x.MaTaiKhoan})").ToArray();
+    var data = Model.Select(x => x.SoLanHienMau).ToArray();
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THỐNG KÊ SỐ LẦN HIẾN MÁU</h1>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">TOP 5 NGƯỜI HIẾN MÁU CAO NHẤT</h5>
+                        <canvas id="barChart" width="400" height="200"></canvas>
+                        <button id="exportPdf">Export to PDF</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<style>
+    #barChart {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('barChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(JsonConvert.SerializeObject(labels)),
+                datasets: [{
+                    label: 'Số lần hiến máu',
+                    data: @Html.Raw(JsonConvert.SerializeObject(data)),
+                    backgroundColor: [
+                        'rgba(50, 162, 80, 0.7)',
+                        'rgba(133, 82, 235, 0.7)',
+                        'rgba(235, 139, 44, 0.7)',
+                        'rgba(235, 79, 112, 0.7)',
+                        'rgba(34, 142, 215, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(50, 162, 80, 1)',
+                        'rgba(133, 82, 235, 1)',
+                        'rgba(235, 139, 44, 1)',
+                        'rgba(235, 79, 112, 1)',
+                        'rgba(34, 142, 215, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            minRotation: 0 // Đảm bảo không xoay
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    },
+                }
+            }
+        });
+
+        // Add Export to PDF functionality
+        document.getElementById('exportPdf').addEventListener('click', function () {
+            const canvas = document.getElementById('barChart');
+
+            // Use html2canvas to convert the chart to an image
+            html2canvas(canvas).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF();
+
+                // Add image to PDF (centered and scaled)
+                const imgWidth = 190; // A4 size width (210mm - 10mm margin on each side)
+                const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
+                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+
+                // Save the PDF
+                pdf.save('chart.pdf');
+            });
+        });
+    });
+</script>
+

@@ -16,6 +16,7 @@ namespace ManageBloodTypes.DBContext
     {
         public int IDThongTin { get; set; }
         public Nullable<int> MaTaiKhoan { get; set; }
+        public Nullable<int> Role { get; set; }
         public string HoTen { get; set; }
         public string SDT { get; set; }
         public string Gmail { get; set; }

@@ -6,16 +6,8 @@
 }
 
 <main id="main" class="main">
-
     <div class="pagetitle">
         <h1>QUẢN LÝ THÔNG TIN NHÓM MÁU</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index">Home</a></li>
-                <li class="breadcrumb-item">Forms</li>
-                <li class="breadcrumb-item active">Elements</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
     <section class="section">
         <div class="row">
@@ -27,24 +19,28 @@
 
                         <!-- General Form Elements -->
                         <form action="/admin/ABloodInfors/create" method="post" enctype="multipart/form-data">
+
                             <div class="row mb-3">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Hình Ảnh</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="file" name="file" id="formFile">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Tiêu Đề</label>
                                 <div class="col-sm-10">
                                     <input type="text" value="@Model.TieuDe" name="TieuDe" class="form-control">
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Nội Dung</label>
                                 <div class="col-sm-10">
                                     <textarea name="NoiDung" class="form-control ckeditor" rows="5"> @Model.NoiDung</textarea>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Thêm Mới</button>

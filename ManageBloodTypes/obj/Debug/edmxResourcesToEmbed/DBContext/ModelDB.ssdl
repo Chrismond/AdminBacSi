@@ -10,14 +10,14 @@
     <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
     <Property Name="Hide" Type="bit" />
   </EntityType>
-  <EntityType Name="tbBloodInfors">
+  <EntityType Name="tbBloodInfor">
     <Key>
       <PropertyRef Name="IDThTinMau" />
     </Key>
     <Property Name="IDThTinMau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
     <Property Name="NoiDung" Type="nvarchar(max)" />
-    <Property Name="HinhAnh" Type="varchar" MaxLength="50" />
+    <Property Name="HinhAnh" Type="varchar(max)" />
     <Property Name="Hide" Type="bit" />
   </EntityType>
   <EntityType Name="tbHinhAnh">
@@ -92,6 +92,7 @@
     </Key>
     <Property Name="IDThongTin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaTaiKhoan" Type="int" />
+    <Property Name="Role" Type="int" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
     <Property Name="SDT" Type="varchar" MaxLength="11" />
     <Property Name="Gmail" Type="varchar" MaxLength="150" />
@@ -109,6 +110,16 @@
     <Property Name="TinhTrangHonNhan" Type="bit" />
     <Property Name="NgheNghiep" Type="int" />
     <Property Name="IDNhomMau" Type="int" />
+    <Property Name="Hide" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbTieuChuan">
+    <Key>
+      <PropertyRef Name="IDTieuChuan" />
+    </Key>
+    <Property Name="IDTieuChuan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="250" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiDung" Type="nvarchar" MaxLength="250" />
     <Property Name="Hide" Type="bit" />
   </EntityType>
   <EntityType Name="tbTinhThanhPho">
@@ -130,7 +141,7 @@
   </EntityType>
   <EntityContainer Name="QLMauModelStoreContainer">
     <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbBloodInfors" EntityType="Self.tbBloodInfors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbBloodInfor" EntityType="Self.tbBloodInfor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbHinhAnh" EntityType="Self.tbHinhAnh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbLichSuGiaoDich" EntityType="Self.tbLichSuGiaoDich" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbNgheNghiep" EntityType="Self.tbNgheNghiep" Schema="dbo" store:Type="Tables" />
@@ -139,6 +150,7 @@
     <EntitySet Name="tbQuyen" EntityType="Self.tbQuyen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbThongKeMau" EntityType="Self.tbThongKeMau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbThongTinCaNhan" EntityType="Self.tbThongTinCaNhan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbTieuChuan" EntityType="Self.tbTieuChuan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbTinhThanhPho" EntityType="Self.tbTinhThanhPho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbXaPhuong" EntityType="Self.tbXaPhuong" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

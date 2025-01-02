@@ -1,0 +1,192 @@
+﻿@model ManageBloodTypes.DBContext.tbLichSuGiaoDich
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN YÊU CẦU</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">THÊM MỚI THÔNG TIN YÊU CẦU</h5>
+
+                        <!-- General Form Elements -->
+                        <form action="/Admin/ALichSuGiaoDiches/create" method="post" enctype="multipart/form-data">
+
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Chọn Mã Tài Khoản</label>
+                                <div class="col-sm-10">
+                                    <select id="MaTaiKhoan" name="MaTaiKhoan" class="form-control">
+                                        @Html.Raw(Html.Action("GetMaTaiKhoan", "ALichSuGiaoDiches"))
+                                    </select>
+                                    @*<select id="MaTaiKhoan" name="MaTaiKhoan" class="form-control">
+                                        <option value="">-- Chọn tài khoản --</option>
+                                        @foreach (var taiKhoan in ViewBag.DanhSachTaiKhoan)
+                                        {
+                                            <option value="@taiKhoan.MaTaiKhoan">@taiKhoan.MaTaiKhoan</option>
+                                        }
+                                    </select>
+                                     <select id="MaTaiKhoan" name="MaTaiKhoan" class="form-control">
+                                        @Html.Raw(ViewBag.MaTaiKhoanHtml)
+                                    </select>*@
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Nhóm Máu</label>
+                                <div class="col-sm-10">
+                                    <div class="form-control" id="HienThiNhomMau" style="font-weight: bold; ">(Chưa có thông tin)</div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Yêu Cầu</label>
+                                <div class="col-sm-10">
+                                    <select name="TinhTrangYeuCau" class="form-control">
+                                        <option value="" selected>Chọn</option>
+                                        <option value="true">Hiến Máu</option>
+                                        <option value="false">Đang Cần Máu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Tình Trạng</label>
+                                <div class="col-sm-10">
+                                    <select name="TrangThai" class="form-control">
+                                        <option value="" selected>Chọn</option>
+                                        <option value="true">Đã Xử Lý</option>
+                                        <option value="false">Chưa Xử Lý</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Ngày Yêu Cầu</label>
+                                <div class="col-sm-10">
+                                    @if (Model.NgayYeuCau.HasValue)
+                                    {
+
+                                        <input type="date" id="inputDate" name="NgayYeuCau" class="form-control"
+                                               value="@(Model.NgayYeuCau.HasValue ? Model.NgayYeuCau.Value.ToString("yyyy-MM-dd") : "")" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" id="inputDate" name="NgayYeuCau" class="form-control" placeholder="Chọn ngày tháng năm" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Số Lượng Máu</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.SoLuongMau" name="SoLuongMau" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Ngày Xác Nhận</label>
+                                <div class="col-sm-10">
+                                    @if (Model.NgayXacNhan.HasValue)
+                                    {
+
+                                        <input type="date" id="inputDate" name="NgayXacNhan" class="form-control"
+                                               value="@(Model.NgayXacNhan.HasValue ? Model.NgayXacNhan.Value.ToString("yyyy-MM-dd") : "")" />
+                                    }
+                                    else
+                                    {
+                                        <input type="date" id="inputDate" name="NgayXacNhan" class="form-control" placeholder="Chọn ngày tháng năm" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Thêm Mới</button>
+                                    <a href="/Admin/ALichSuGiaoDiches" class="btn btn-danger"> Quay Lại</a>
+                                </div>
+                            </div>
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+</main>
+
+<script>
+
+    // Khi thay đổi mã tài khoản
+    //document.getElementById("MaTaiKhoan").addEventListener("change", function () {
+    //    const maTaiKhoan = this.value; // Lấy mã tài khoản được chọn
+    //    const nhomMauDiv = document.getElementById("HienThiNhomMau"); // Div hiển thị nhóm máu
+
+    //    if (maTaiKhoan) {
+    //        fetch(`/Admin/ALichSuGiaoDiches/GetNhomMauByMaTaiKhoan?maTaiKhoan=${maTaiKhoan}`)
+    //            .then(response => response.json())
+    //            .then(data => {
+    //                if (data.success) {
+    //                    nhomMauDiv.textContent = `${data.idNhomMau}`;
+    //                } else {
+    //                    nhomMauDiv.textContent = `(Chưa có thông tin)`; // Trường hợp không tìm thấy thông tin
+    //                }
+    //            })
+    //            .catch(() => {
+    //                nhomMauDiv.textContent = `(Chưa có thông tin)`; // Trường hợp lỗi
+    //            });
+    //    } else {
+    //        nhomMauDiv.textContent = `(Chưa có thông tin)`; // Reset nếu không chọn tài khoản
+    //    }
+    //});
+    document.getElementById("MaTaiKhoan").addEventListener("change", function () {
+        const maTaiKhoan = this.value;
+        const nhomMauDiv = document.getElementById("HienThiNhomMau");
+
+        if (maTaiKhoan) {
+            // Fetch thông tin nhóm máu theo mã tài khoản
+            fetch(`/Admin/ALichSuGiaoDiches/GetNhomMauByMaTaiKhoan?maTaiKhoan=${maTaiKhoan}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const idNhomMau = data.idNhomMau;
+
+                        // Nếu có IDNhomMau, lấy tên nhóm máu
+                        if (idNhomMau !== "Không có thông tin") {
+                            fetch(`/Admin/ALichSuGiaoDiches/GetNhomMauNameById?idNhomMau=${idNhomMau}`)
+                                .then(response => response.json())
+                                .then(nhomMauData => {
+                                    if (nhomMauData.success) {
+                                        nhomMauDiv.textContent = ` ${nhomMauData.tenNhomMau}`;
+                                    } else {
+                                        nhomMauDiv.textContent = `(Chưa có thông tin)`;
+                                    }
+                                })
+                                .catch(() => {
+                                    nhomMauDiv.textContent = `(Chưa có thông tin)`;
+                                });
+                        } else {
+                            nhomMauDiv.textContent = `(Chưa có thông tin)`;
+                        }
+                    } else {
+                        nhomMauDiv.textContent = `(Chưa có thông tin)`;
+                    }
+                })
+                .catch(() => {
+                    nhomMauDiv.textContent = `(Chưa có thông tin)`;
+                });
+        } else {
+            nhomMauDiv.textContent = `(Chưa có thông tin)`;
+        }
+    });
+
+
+</script>

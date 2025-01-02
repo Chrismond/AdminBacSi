@@ -5,18 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bfc03d0f0ef24117a469fbffcbb016af" Name="Diagram1" ZoomLevel="108">
-        <EntityTypeShape EntityType="QLMauModel.tbNgheNghiep" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbNhomMau" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbQuanHuyen" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbQuyen" Width="1.5" PointX="2.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbTinhThanhPho" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbXaPhuong" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLMauModel.tbLichSuGiaoDich" Width="1.5" PointX="4.5" PointY="2.625" />
-        <EntityTypeShape EntityType="QLMauModel.tbThongKeMau" Width="1.5" PointX="5.75" PointY="6.75" />
-        <EntityTypeShape EntityType="QLMauModel.tbThongTinCaNhan" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="QLMauModel.tbBanner" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="QLMauModel.tbHinhAnh" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="QLMauModel.tbBloodInfor" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbBanner" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbBloodInfor" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbHinhAnh" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbLichSuGiaoDich" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbNgheNghiep" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbNhomMau" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbQuanHuyen" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbQuyen" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbThongKeMau" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbThongTinCaNhan" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbTieuChuan" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbTinhThanhPho" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLMauModel.tbXaPhuong" Width="1.5" PointX="8.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

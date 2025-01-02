@@ -139,15 +139,23 @@
     <Compile Include="App_Start\Processing.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ABannersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ABloodInforsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AHinhAnhController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ALichSuGiaoDichesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ANgheNghiepsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ANhomMausController.cs" />
     <Compile Include="Areas\Admin\Controllers\AQuanHuyensController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AQuyensController.cs" />
     <Compile Include="Areas\Admin\Controllers\ATaiKhoanAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AThongKeMausController.cs" />
     <Compile Include="Areas\Admin\Controllers\AThongTinCaNhansController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ATieuChuansController.cs" />
     <Compile Include="Areas\Admin\Controllers\ATinhThanhPhoesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AXaPhuongsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Model\SoLanHienMauModel.cs" />
+    <Compile Include="Areas\Admin\Model\TinhTrangGiaoDichModel.cs" />
     <Compile Include="Controllers\ConnectingController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\EditController.cs" />
@@ -206,6 +214,9 @@
     <Compile Include="DBContext\tbThongTinCaNhan.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\tbTieuChuan.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\tbTinhThanhPho.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -226,6 +237,8 @@
     <Compile Include="Models\ThongTinCaNhanModels.cs" />
     <Compile Include="Models\NgheNghiepModel.cs" />
     <Compile Include="Models\ThongTinMauModel.cs" />
+    <Compile Include="Models\TieuChuanModel.cs" />
+    <Compile Include="Models\TuyenDuongModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2969,6 +2982,7 @@
     <Content Include="Content\LandingPage\images\person_2.jpg" />
     <Content Include="Content\LandingPage\images\person_3.jpg" />
     <Content Include="Content\LandingPage\images\person_4.jpg" />
+    <Content Include="Content\LandingPage\images\pic1.jpg" />
     <Content Include="Content\LandingPage\images\work-1.jpg" />
     <Content Include="Content\LandingPage\images\work-2.jpg" />
     <Content Include="Content\LandingPage\images\work-3.jpg" />
@@ -2988,6 +3002,7 @@
     <Content Include="Content\LandingPage\js\jquery.min.js" />
     <Content Include="Content\LandingPage\js\jquery.stellar.min.js" />
     <Content Include="Content\LandingPage\js\jquery.waypoints.min.js" />
+    <Content Include="Content\LandingPage\js\ladipagev3.min.js" />
     <Content Include="Content\LandingPage\js\main.js" />
     <Content Include="Content\LandingPage\js\owl.carousel.min.js" />
     <Content Include="Content\LandingPage\js\popper.min.js" />
@@ -3661,6 +3676,37 @@
     <Content Include="Content\LandingPage\scss\bootstrap\_utilities.scss" />
     <Content Include="Content\LandingPage\scss\bootstrap\_variables.scss" />
     <Content Include="Content\LandingPage\scss\style.scss" />
+    <Content Include="Areas\Admin\Views\ALichSuGiaoDiches\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ALichSuGiaoDiches\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ALichSuGiaoDiches\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ALichSuGiaoDiches\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ALichSuGiaoDiches\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AQuyens\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AQuyens\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AQuyens\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AQuyens\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AQuyens\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ATaiKhoanAdmin\UpdateUserProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\AThongKeMaus\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AThongKeMaus\ThongKeNhomMau.cshtml" />
+    <Content Include="Areas\Admin\Views\AHinhAnh\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AHinhAnh\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AHinhAnh\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AHinhAnh\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AHinhAnh\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ATieuChuans\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ATieuChuans\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ATieuChuans\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ATieuChuans\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ATieuChuans\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ABanners\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ABanners\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ABanners\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ABanners\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ABanners\Index.cshtml" />
+    <Content Include="Content\LandingPage\fonts\bungee-regular-20220619064519.ttf" />
+    <Content Include="Content\LandingPage\fonts\JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf" />
+    <Content Include="Content\LandingPage\fonts\JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3722,6 +3768,8 @@
     <Content Include="Views\LandingPage\HinhAnh.cshtml" />
     <Content Include="Views\Shared\_Layout_News.cshtml" />
     <Content Include="Views\LandingPage\Details.cshtml" />
+    <Content Include="Views\LandingPage\TieuChuan.cshtml" />
+    <Content Include="Views\LandingPage\TuyenDuong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

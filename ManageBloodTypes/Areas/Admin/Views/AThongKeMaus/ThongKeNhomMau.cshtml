@@ -1,0 +1,103 @@
+﻿@model IEnumerable<ManageBloodTypes.Areas.Admin.Model.SoLanHienMauModel>
+@using Newtonsoft.Json
+
+@{
+    ViewBag.Title = "Thống Kê Nhóm Máu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>THỐNG KÊ NHÓM MÁU (HIẾN MÁU & NHẬN MÁU)</h1>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Biểu đồ cho nhóm máu @item.NhomMau</h5>
+                            <canvas id="pieChart_@item.NhomMau" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+<style>
+    canvas {
+        margin-top: 20px;
+    }
+</style>
+
+<!-- Thêm script chartjs-plugin-datalabels -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Dữ liệu nhóm máu, số lần hiến máu và nhận máu
+        const chartData = @Html.Raw(JsonConvert.SerializeObject(Model));
+
+        // Duyệt qua từng nhóm máu để vẽ biểu đồ tròn cho mỗi nhóm
+        chartData.forEach(item => {
+            const ctx = document.getElementById('pieChart_' + item.NhomMau).getContext('2d');
+
+            // Sử dụng Chart.js để tạo biểu đồ tròn
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Hiến máu', 'Nhận máu'], // Các phần trong biểu đồ (hiến máu, nhận máu)
+                    datasets: [{
+                        label: 'Số lần hiến và nhận máu',
+                        data: [item.SoLanHienMau, item.SoLanNhanMau], // Số lần hiến máu và nhận máu
+                        backgroundColor: [
+                            'rgba(50, 162, 80, 0.7)',  // Màu cho hiến máu
+                            'rgba(235, 79, 112, 0.7)' // Màu cho nhận máu
+                        ],
+                        borderColor: [
+                            'rgba(50, 162, 80, 1)',
+                            'rgba(235, 79, 112, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top', // Vị trí legend
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' lần';
+                                }
+                            }
+                        },
+                        datalabels: {
+                            formatter: (value, context) => {
+                                // Tính phần trăm
+                                let total = context.dataset.data.reduce((sum, currentValue) => sum + currentValue, 0);
+                                let percentage = ((value / total) * 100).toFixed(2);
+                                return percentage + '%'; // Hiển thị phần trăm
+                            },
+                            color: 'white', // Màu chữ
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
+                            anchor: 'center'
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels] // Đảm bảo plugin được áp dụng
+            });
+        });
+    });
+</script>

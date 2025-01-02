@@ -9,13 +9,6 @@
 
     <div class="pagetitle">
         <h1>QUẢN LÝ THÔNG TIN QUẬN/HUYỆN</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index">Home</a></li>
-                <li class="breadcrumb-item">Forms</li>
-                <li class="breadcrumb-item active">Elements</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -24,7 +17,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">DANH SÁCH CÁC THÔNG TIN QUẬN/HUYỆN</h5>
+                        <h5 class="card-title">CHỈNH SỬA THÔNG TIN QUẬN/HUYỆN</h5>
 
                         <!-- General Form Elements -->
                         <form action="/admin/AQuanHuyens/edit" method="post" enctype="multipart/form-data">
@@ -47,21 +40,11 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Trạng Thái</label>
                                 <div class="col-sm-2">
-                                    <select id="hideSelect" class="form-select" name="Hide" aria-label="Default select example">
-                                        @if (@Model.Hide == true)
-                                        {
-                                            <option value="default">Ẩn</option>
-                                            <option value="true">Hiện</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="default">Hiện</option>
-                                            <option value="false">Ẩn</option>
-                                        }
+                                    <select name="Hide" class="form-control">
+                                        <option value="true" @(Model.Hide == true ? "selected" : "")>Ẩn</option>
+                                        <option value="false" @(Model.Hide == false ? "selected" : "")>Hiện</option>
                                     </select>
                                 </div>
-
-
                             </div>
 
 

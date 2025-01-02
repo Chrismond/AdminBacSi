@@ -12,6 +12,42 @@
 :root {
   scroll-behavior: smooth;
 }
+#barChart {
+    word-wrap: break-word; /* Đảm bảo văn bản bị cắt và xuống dòng */
+    white-space: normal; /* Cho phép xuống dòng trong các nhãn */
+}
+#error_message1 {
+    display: block; /* Đảm bảo phần tử hiển thị */
+    white-space: nowrap; /* Không xuống dòng trên màn hình lớn */
+}
+
+@media screen and (max-width: 768px) {
+    #error_message1 {
+        white-space: normal; /* Cho phép xuống dòng trên màn hình nhỏ */
+        word-wrap: break-word; /* Chia từ nếu cần thiết */
+    }
+}
+
+.alert {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+    .alert - success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert - danger {
+        color: red;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
 .center-screen {
     display: flex;
     flex-direction: column; /* Sắp xếp nội dung theo cột (logo trên chữ) */
@@ -412,8 +448,10 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   height: 60px;
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+/*  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;*/
+    background: linear-gradient(180deg, #666, #f6f9ff);
+
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -630,19 +668,21 @@ h6 {
 # Sidebar
 --------------------------------------------------------------*/
 .sidebar {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 996;
-  transition: all 0.3s;
-  padding: 20px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 996;
+    transition: all 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #aab7cf transparent;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+    background-color: #fff;
+    color: #fff;
+    background: #333;
 }
 
 @media (max-width: 1199px) {
@@ -700,7 +740,7 @@ h6 {
 }
 
 .sidebar-nav .nav-item {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .sidebar-nav .nav-heading {
@@ -716,40 +756,48 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
-  transition: 0.3;
-  background: #f6f9ff;
+/*  color: #4154f1;
+  background: #f6f9ff;*/
+  transition: 0.001s;
   padding: 10px 15px;
   border-radius: 4px;
+  color: #fff;
+    background: #222;
 }
 
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  /*color: #4154f1;*/
+    color: #fff;
+    background: #222;
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
+  /*color: #012970;
+  background: #fff;*/
+      color: #fff;
+    background: #222;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-  color: #899bbd;
+  color: #fff;
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #222;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+ color: #222;
+    background: #f6f9ff;
+
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
   margin-right: 0;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.001s ease-in-out;
 }
 
 .sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
@@ -767,8 +815,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
-  transition: 0.3;
+  color: #d0d0d0;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
 }
@@ -780,10 +827,10 @@ h6 {
   border-radius: 50%;
 }
 
-.sidebar-nav .nav-content a:hover,
-.sidebar-nav .nav-content a.active {
-  color: #4154f1;
-}
+    .sidebar-nav .nav-content a:hover,
+    .sidebar-nav .nav-content a.active {
+        color: #fff;
+    }
 
 .sidebar-nav .nav-content a.active i {
   background-color: #4154f1;
