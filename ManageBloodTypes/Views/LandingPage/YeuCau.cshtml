@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ManageBloodTypes.Models.YeuCauModel>
+
+<section class="ftco-section bg-light" id="skills-section">
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <h2 class="mb-4">THỐNG KÊ YÊU CẦU</h2>
+            </div>
+        </div>
+        <div class="row progress-circle mb-5">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 mb-4">
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <h2 class="h5 font-weight-bold text-center mb-4">@item.Ten</h2>
+
+                        <!-- Progress bar 1 -->
+                        <canvas id="pieChart_@item.ID" width="400" height="200"></canvas>
+                        <!-- END -->
+                        <!-- Demo info -->
+                        <div class="row text-center mt-4">
+                            <div class="col-6 border-right">
+                                <div class="h4 font-weight-bold mb-0">@item.SoLanHienMau</div><span class="small text-gray">Số lần hiến</span>
+                            </div>
+                            <div class="col-6">
+                                <div class="h4 font-weight-bold mb-0">@item.SoLanNhanMau</div><span class="small text-gray">Số lần nhận</span>
+                            </div>
+                        </div>
+                        <!-- END -->
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!-- Thêm script chartjs-plugin-datalabels -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Dữ liệu nhóm máu, số lần hiến máu và nhận máu
+        const chartData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+        // Duyệt qua từng nhóm máu để vẽ biểu đồ tròn cho mỗi nhóm
+        chartData.forEach(item => {
+            const ctx = document.getElementById('pieChart_' + item.ID).getContext('2d');
+
+            // Tính tổng số lần hiến và nhận máu
+            const total = item.SoLanHienMau + item.SoLanNhanMau;
+
+            // Nếu tổng = 0, không vẽ biểu đồ
+            if (total === 0) {
+                return;  // Nếu tổng là 0 thì bỏ qua biểu đồ này
+            }
+
+            // Tính phần trăm cho mỗi loại
+            const hienPercent = ((item.SoLanHienMau / total) * 100).toFixed(2);
+            const nhanPercent = ((item.SoLanNhanMau / total) * 100).toFixed(2);
+
+            // Sử dụng Chart.js để tạo biểu đồ tròn
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        `Hiến máu (${hienPercent}%)`,  // Mẫu với phần trăm hiến máu
+                        `Nhận máu (${nhanPercent}%)`   // Mẫu với phần trăm nhận máu
+                    ],
+                    datasets: [{
+                        label: 'Số lần hiến và nhận máu',
+                        data: [item.SoLanHienMau, item.SoLanNhanMau],  // Dữ liệu hiến và nhận máu
+                        backgroundColor: [
+                            'rgba(50, 162, 80, 0.7)',  // Màu cho hiến máu
+                            'rgba(235, 79, 112, 0.7)'  // Màu cho nhận máu
+                        ],
+                        borderColor: [
+                            'rgba(50, 162, 80, 1)',  // Màu viền cho hiến máu
+                            'rgba(235, 79, 112, 1)'  // Màu viền cho nhận máu
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top', // Vị trí legend
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + ' lần';
+                                }
+                            }
+                        },
+                        datalabels: {
+                            formatter: (value, context) => {
+                                // Tính phần trăm và hiển thị
+                                let total = context.dataset.data.reduce((sum, currentValue) => sum + currentValue, 0);
+                                let percentage = ((value / total) * 100).toFixed(2);
+                                return percentage + '%';  // Hiển thị phần trăm
+                            },
+                            color: 'white',  // Màu chữ
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
+                            anchor: 'center'
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels] // Đảm bảo plugin được áp dụng
+            });
+        });
+    });
+</script>

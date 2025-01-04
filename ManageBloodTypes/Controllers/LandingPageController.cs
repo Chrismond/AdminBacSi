@@ -124,10 +124,46 @@ namespace ManageBloodTypes.Controllers
                      SoLanHienMau = tk.SoLanHienMau,
                      HoTen = tt.HoTen
                  }).Take(5).ToList();
+            return PartialView(topDonors);
+        }
+        public ActionResult ThongKe_HomePgae()
+        {
+            List<int> ints = new List<int>();   
+            NghiepVuModel model = new NghiepVuModel();
+            model.SoNguoi = db.tbThongTinCaNhans.Where(s => s.Hide == false).Count();
+            ints = db.tbThongKeMaus.Where(x=>x.Hide == false).Select(s=>s.SoLanHienMau.Value).ToList();
+            model.SLHienMau = ints.Sum();
+            ints = new List<int>();
+            ints = db.tbThongKeMaus.Where(x => x.Hide == false).Select(s => s.SoLanNhanMau.Value).ToList();
+            model.SLNhanMau = ints.Sum();
+            ints = new List<int>();
+            ints = db.tbLichSuGiaoDiches.Where(x => x.Hide == false && x.TinhTrangYeuCau == false && x.TrangThai == false).Select(s => s.IDGiaoDich).ToList();
+            model.SlCho = ints.Count;
+            return PartialView(model);
+        }
+        public ActionResult YeuCau()
+        {
+            // Kết hợp 3 bảng để lấy dữ liệu
+            var a = (from ca in db.tbThongKeMaus
+                     join info in db.tbThongTinCaNhans
+                     on ca.MaTaiKhoan equals info.MaTaiKhoan // Liên kết qua MaTaiKhoan
+                     join nhom in db.tbNhomMaus
+                     on info.IDNhomMau equals nhom.IDNhomMau // Liên kết qua IDNhomMau
+                     where ca.Hide == false                 // Điều kiện lọc
+                     select new YeuCauModel
+                     {
+                         ID = ca.IDThongKeMau,         // ID thống kê máu
+                         Ten = nhom.TenNhomMau,       // Tên nhóm máu từ bảng tbNhomMaus
+                         SoLanHienMau = ca.SoLanHienMau,    // Số lần hiến máu
+                         SoLanNhanMau = ca.SoLanNhanMau,    // Số lần nhận máu
+                     }).ToList();
 
-                        return PartialView(topDonors);
-
+            // Trả về PartialView với danh sách dữ liệu
+            return PartialView(a);
         }
 
+
+
     }
+
 }

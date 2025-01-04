@@ -9077,11 +9077,11 @@ h1, h2, h3, h4, h5,
     max-width: 80%;
     z-index: 1;
     opacity: 0;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease; }
+    -moz-transition: all 0.03s ease;
+    -o-transition: all 0.03s ease;
+    -webkit-transition: all 0.03s ease;
+    -ms-transition: all 0.03s ease;
+    transition: all 0.03s ease; }
     .project .text h3 {
       font-size: 20px;
       font-weight: 600; }
@@ -9484,6 +9484,7 @@ textarea.form-control {
       font-weight: 700;
       font-size: 30px;
       color: rgba(0, 0, 0, 0.8);
+      transition: 0.001s;
       display: block;
       margin-bottom: 4px; }
     .ftco-counter .text span {

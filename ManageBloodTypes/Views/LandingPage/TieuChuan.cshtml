@@ -4,17 +4,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-                <h2 class="mb-4">Tiêu Chuẩn Tham Gia Hiến Máu</h2>
+                <h2 class="mb-4">TIÊU CHUẨN THAM GIA HIẾN MÁU</h2>
             </div>
         </div>
         <div class="row">
             @foreach (var item in Model)
             {
                 <div class="col-md-6 col-lg-3">
-                    <div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+                    <div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate" style="height:350px">
                         <div class="icon d-flex align-items-center justify-content-center"><span class="@item.Icon"></span></div>
                         <div class="media-body">
-                            <h3 class="heading mb-3">@item.TieuDe</h3>
+                            <h3 class="heading mb-3" style="text-transform: uppercase; font-weight: bold; font-family: 'Arial', sans-serif; text-align:center ">@item.TieuDe</h3>
                             <p>@Html.Raw(item.NoiDung)</p> 
                         </div>
                     </div>

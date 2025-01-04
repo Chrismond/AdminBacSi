@@ -20,7 +20,7 @@ Copyright (c) 2015 Daniel Eden
   animation-fill-mode: both;
 }
 .ftco-animated {
-  -webkit-animation-duration: .5s;
+  -webkit-animation-duration: .05s;
   animation-duration: .5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
@@ -1461,6 +1461,7 @@ Copyright (c) 2015 Daniel Eden
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+
 }
 
 @-webkit-keyframes fadeInUpMenu {

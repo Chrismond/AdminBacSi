@@ -36,41 +36,7 @@ namespace ManageBloodTypes.Areas.Admin.Controllers
 
             return View(topDonors);
         }
-        //var thongKeMaus = db.tbThongKeMaus.Where(x => x.Hide == false).ToList();
-        //if (!thongKeMaus.Any())
-        //{
-        //    return Content("Không có dữ liệu trong tbThongKeMaus với Hide = false.");
-        //}
-
-        //// Thực hiện sắp xếp và lấy Top 5
-        //var topThongKe = thongKeMaus.OrderByDescending(x => x.SoLanHienMau).Take(5).ToList();
-        //if (!topThongKe.Any())
-        //{
-        //    return Content("Không có bản ghi thỏa mãn điều kiện lấy Top 5.");
-        //}
-
-        //// Thực hiện Join
-        //var topDonors = topThongKe.Join(
-        //    db.tbThongTinCaNhans, // Bảng chứa thông tin cá nhân
-        //    tk => tk.MaTaiKhoan,  // Dữ liệu từ bảng tbThongKeMau
-        //    tt => tt.MaTaiKhoan,  // Dữ liệu từ bảng tbThongTinCaNhan
-        //    (tk, tt) => new SoLanHienMauModel
-        //    {
-        //        MaTaiKhoan = tk.MaTaiKhoan,
-        //        SoLanHienMau = tk.SoLanHienMau,
-        //        HoTen = tt.HoTen
-        //    }
-        //).ToList();
-
-        //if (!topDonors.Any())
-        //{
-        //    return Content("Không có bản ghi nào sau khi Join với bảng tbThongTinCaNhans.");
-        //}
-
-        //return View(topDonors);
-    
-
-        //
+        
         public ActionResult ThongKeNhomMau()
         {
             // Lấy dữ liệu từ bảng tbLichSuGiaoDich, lọc theo IDNhomMau và TinhTrangYeuCau

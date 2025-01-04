@@ -229,6 +229,7 @@
     <Compile Include="Models\BannerModel.cs" />
     <Compile Include="Models\HinhAnhModel.cs" />
     <Compile Include="Models\LichSuGiaoDichModel.cs" />
+    <Compile Include="Models\NghiepVuModel.cs" />
     <Compile Include="Models\NhomMauModel.cs" />
     <Compile Include="Models\PhuongXaModel.cs" />
     <Compile Include="Models\QuanHuyenModel.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="Models\ThongTinMauModel.cs" />
     <Compile Include="Models\TieuChuanModel.cs" />
     <Compile Include="Models\TuyenDuongModel.cs" />
+    <Compile Include="Models\YeuCauModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3770,6 +3772,8 @@
     <Content Include="Views\LandingPage\Details.cshtml" />
     <Content Include="Views\LandingPage\TieuChuan.cshtml" />
     <Content Include="Views\LandingPage\TuyenDuong.cshtml" />
+    <Content Include="Views\LandingPage\ThongKe_HomePgae.cshtml" />
+    <Content Include="Views\LandingPage\YeuCau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
